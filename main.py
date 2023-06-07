@@ -7,6 +7,10 @@ screen.setup(width=800,height=600)
 screen.bgcolor('black')
 screen.title('Pong')
 
-paddle1 = Paddle()
+paddle = Paddle()
+screen.listen()
+
+screen.onkey(fun=paddle.moveup, key='Up')
+screen.onkey(fun=paddle.movedown, key='Down')
 
 screen.exitonclick()
