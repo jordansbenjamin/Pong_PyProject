@@ -25,4 +25,22 @@ while game_is_on:
     screen.update()
     # screen.exitonclick()
 
+    # # If paddle coordinate moves
+    # if r_paddle.ycor() != 0:
+    # # The ball starts moving
+    #     while True:
+    #         screen.tracer(1)
+    #         ball.x_pos += 10
+    #         ball.y_pos += 10
+    #         ball.goto(ball.x_pos, ball.y_pos)
+    #         screen.update()
+    #         if ball.xcor() == 50 or ball.ycor() == 50:
+    #             break
+    # If paddle coordinate moves
+    if r_paddle.ycor() != 0:
+    # The ball starts moving
+        screen.tracer(1)
+        ball.move_ball()
+        screen.update()
+
 screen.exitonclick()
