@@ -24,7 +24,7 @@ screen.onkeypress(fun=l_paddle.movedown, key='s')
 game_is_on = True
 
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(0.08)
     # screen.tracer(1)
     screen.update()
     ball.move_ball()
@@ -36,6 +36,11 @@ while game_is_on:
     # Detect collision with paddle
     if ball.distance(r_paddle) < 50 and ball.xcor() > 320 or ball.distance(l_paddle) < 50 and ball.xcor() < -320:
         ball.bounce_x()
+
+    # Detect collision with players walls
+    if ball.xcor() > 380 or ball.xcor() < -390:
+        ball.reset()
+        # time.sleep(1.5)
 
 
 screen.exitonclick()
