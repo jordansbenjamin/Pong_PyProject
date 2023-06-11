@@ -1,6 +1,8 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+import time
+import random as rand
 
 screen = Screen()
 
@@ -22,25 +24,15 @@ screen.onkeypress(fun=l_paddle.movedown, key='s')
 game_is_on = True
 
 while game_is_on:
+    time.sleep(0.1)
+    # screen.tracer(1)
     screen.update()
-    # screen.exitonclick()
+    ball.move_ball()
 
-    # # If paddle coordinate moves
-    # if r_paddle.ycor() != 0:
-    # # The ball starts moving
-    #     while True:
-    #         screen.tracer(1)
-    #         ball.x_pos += 10
-    #         ball.y_pos += 10
-    #         ball.goto(ball.x_pos, ball.y_pos)
-    #         screen.update()
-    #         if ball.xcor() == 50 or ball.ycor() == 50:
-    #             break
-    # If paddle coordinate moves
-    if r_paddle.ycor() != 0:
-    # The ball starts moving
-        screen.tracer(1)
-        ball.move_ball()
-        screen.update()
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        # directions = [-10,10]
+        # x = rand.choice(directions)
+        # y = rand.choice(directions)
+        ball.bounce()
 
 screen.exitonclick()
