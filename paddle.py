@@ -15,9 +15,9 @@ class Paddle(Turtle):
         # self.showturtle()
     
     def moveup(self):
-        self.y_pos += 20
+        self.y_pos += 40
         self.goto(x=self.x_pos, y=self.y_pos)
 
     def movedown(self):
-        self.y_pos -= 20
+        self.y_pos -= 40
         self.goto(x=self.x_pos, y=self.y_pos)

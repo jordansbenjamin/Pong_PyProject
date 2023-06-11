@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 import random as rand
 
@@ -14,6 +15,7 @@ screen.tracer(0)
 r_paddle = Paddle(350, 0)
 l_paddle = Paddle(-350, 0)
 ball = Ball()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkeypress(fun=r_paddle.moveup, key='Up')
@@ -24,7 +26,7 @@ screen.onkeypress(fun=l_paddle.movedown, key='s')
 game_is_on = True
 
 while game_is_on:
-    time.sleep(0.08)
+    time.sleep(ball.move_speed)
     # screen.tracer(1)
     screen.update()
     ball.move_ball()
@@ -38,9 +40,13 @@ while game_is_on:
         ball.bounce_x()
 
     # Detect collision with players walls
-    if ball.xcor() > 380 or ball.xcor() < -390:
+    if ball.xcor() > 380:
         ball.reset()
-        # time.sleep(1.5)
+        scoreboard.l_point()
+    # Left paddle
+    if ball.xcor() < -390:
+        ball.reset()
+        scoreboard.r_point()
 
 
 screen.exitonclick()
